@@ -50,10 +50,42 @@ const App = () => {
     }, []));
   };
 
+  const showCommentField = postId => {
+    setPosts(posts.map((post) => {
+      if (post.id === postId) {
+        return {...post, showComment: !post.showComment};
+      } else {
+        return post;
+      }
+    }));
+  };
+
+  const addComment = (postId, target) => {
+    setPosts(posts.map((post) => {
+      if (post.id === postId) {
+        const newComment = {
+          id: 22, // id would be generated when adding to database
+          username: 'current_user', // would be generated using authentication
+          text: target.value
+        };
+        return {...post, comments: [...post.comments, newComment]};
+      } else {
+        return post;
+      }
+    }));
+    target.value = '';
+  };
+
   return (
     <div className='App'>
       {<SearchBar searchPosts={searchPosts} />}
-      {<Posts posts={posts} likePost={likePost} filteredPostIds={filteredPostIds} />}
+      {<Posts 
+        posts={posts} 
+        likePost={likePost} 
+        filteredPostIds={filteredPostIds} 
+        addComment={addComment} 
+        showCommentField={showCommentField}
+      />}
     </div>
   );
 };

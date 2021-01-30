@@ -63,22 +63,22 @@ const dummyData = [
         timestamp: "July 15th 2017, 03:12:09 pm",
         comments: [
             {
-                id: 36,
+                id: 40,
                 username: "fluffythecat",
                 text: "Meow",
             },
             {
-                id: 37,
+                id: 41,
                 username: "mina97",
                 text: "=^___^=",
             },
             {
-                id: 38,
+                id: 42,
                 username: "cat_fanatic",
                 text: "Cats rule",
             },
             {
-                id: 39,
+                id: 43,
                 username: "catastic",
                 text: "I am a cat",
             },

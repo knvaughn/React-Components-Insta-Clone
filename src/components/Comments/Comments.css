@@ -25,3 +25,13 @@
   color: black;
   font-weight: bold;
 }
+.add-comment {
+  display: block;
+  width: 90%;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  outline: none;
+  margin: 20px;
+}
