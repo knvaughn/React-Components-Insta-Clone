@@ -18,6 +18,7 @@ const App = () => {
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
   const [posts, setPosts] = useState(dummyData);
+  const [filteredPostIds, setFilteredPostIds] = useState(posts.map((post) => post.id));
 
   const likePost = postId => {
     /*
@@ -40,10 +41,19 @@ const App = () => {
     }));
   };
 
+  const searchPosts = searchTerm => {
+    setFilteredPostIds(posts.reduce((filtered, post) => {
+      if (!searchTerm || post.username.includes(searchTerm)) {
+        filtered.push(post.id)
+      }
+      return filtered;
+    }, []));
+  };
+
   return (
     <div className='App'>
-      {<SearchBar />}
-      {<Posts posts={posts} likePost={likePost} />}
+      {<SearchBar searchPosts={searchPosts} />}
+      {<Posts posts={posts} likePost={likePost} filteredPostIds={filteredPostIds} />}
     </div>
   );
 };
